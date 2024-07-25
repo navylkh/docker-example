@@ -1,0 +1,19 @@
+  services:
+    maria:
+      image: mariadb:10.6
+      container_name: mariadb-test
+      restart: always
+      ports:
+        - 3306:3306
+      volumes:
+        - ./docker/mariadb/etc/mysql/conf.d:/etc/mysql/conf.d:ro
+        - ./docker/mariadb/var/lib/mysql:/var/lib/mysql
+        - ./docker/mariadb/var/log/maria:/var/lib/maria
+      environment:
+        - TZ="Asia/Seoul"
+        - ALLOW_EMPTY_PASSWORD=no
+        - MARIADB_ROOT_PASSWORD=yiwoo@123
+        - MARIADB_USER=yiwoo
+        - MARIADB_DATABASE=test
+        - MARIADB_PASSWORD=yiwoo@123
+    
